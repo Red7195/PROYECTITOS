@@ -1,0 +1,115 @@
+CREATE TABLE datos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    apellidop VARCHAR(50),
+    apellidom VARCHAR(50)
+);
+
+// Función que valida los datos del formulario
+function validarDatos(){
+
+    //si el campo nombre esta vacio
+if (!document.form.nombre.value) {
+        alert("se necesita un nombre"); // muestra mensaje
+        document.form.nombre.focus(); //pone el cursor en el campo
+        return false; //detiene el envio del formulario
+    }
+        // si el apellido paterno esta vacio
+
+        if (!document.form.nombre.value) {
+        alert("se necesita apellido paterno");
+        document.form.nombre.focus();
+        return false; 
+        }
+        
+        // si el apellido materno esta vacio
+        if (!document.form.nombre.value) {
+        alert("se necesita apellido paterno");
+        document.form.nombre.focus();
+        return false;
+         }
+    
+    return true; //permite el envio del formulario
+}
+
+
+/*Fondo general */
+body{
+    margin:0;
+    padding:0;
+    font-family: 'segoe UI', sans-serif;
+    background: linear-gradient(135deg,#667eea, #764ba2);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Contenedor/Cajita de texto */
+
+.contenedor{
+    background: white; /* fondo blanco */
+    padding: 40px; /* espacio interno */
+    border-radius: 10px; /*espacio interno */
+    width: 350px; /* bordes redondeados */
+    box-shadow: 0px 10px 25px rgba(0,0,0,0,2); /*sombra de la cajita */
+}
+
+/* Titulo */
+h2{
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Labels/etiquetas */
+
+label{
+    font-size: 14px; /* tamaño pequeño */
+    color: #555; /* gris */
+    display: block; /* ocupa toda la linea */
+    margin-top: 10px; /* separacion superior */
+}
+
+/* Input/ campos de texto */
+
+input[type="text"]{ 
+    width: 100%; /* ocupa todo el ancho */
+    padding: 10px; /* espacio interno */
+    margin-top: 5px; /* separacion del label */
+    border: 1px solid #ccc; /* borde gris */
+    border-radius: 6px; /* bordes redondeados */
+    transition: 0.3s; /* animacion suave */
+}
+
+/* Efecto al escribir */
+input[type="text"]:focus{
+    border-color: #667eea; /* cambia color del borde */
+    outline: none; /* quita borde azul con defecto */
+
+    /* efecto de iluminacion */
+    box-shadow: 0 0 5px rgba(102,126,234,0.5); 
+}
+
+/* botón enviar */
+input[type="submit"]{
+    width: 100%; /* ancho completo */
+    padding:12px; /* tamaño del botón */
+    margin-top: 20px; /* separacion arriba */
+
+    border: none; /* sin borde */
+    border-radius: 6px; /* redondeado */
+
+    background: #667eea;  /* color principal */
+    color:white; /* texto blanco */
+
+    font-size: 16px; /* tamaño del texto */ 
+    cursor: pointer; /* cambia el curso */
+
+    transition: 0.3s; /* animación */
+}
+
+/*Hover botón cuanto pasas el mouse */
+input[type="submit"]:hover{
+    background: #5a67d8; /* color más oscuro */
+}

@@ -1,0 +1,30 @@
+body{
+    background-color: #eee;
+    font-family: sans-serif;
+}
+
+.margen{
+    background-color: blueviolet; /*Color del margin */
+    padding:40px;
+}
+
+/* Esta clase se aplica al primer div que rodea todo lo demas.
+
+Backgroud-color: lightblue;: pinta de celeste claro, para representar visualmente el margen simulado.
+
+Padding: 40px;:agrega espacio interno de 40px en los 4 lados, lo que separa el borde de la siguiente caja .caja
+
+Este div.margen simula el margin, porque el margin real no puede tener color, para mostrarlo, usamos padding y fondo celeste.*/
+
+.caja{
+    border: 50px solid blue; /*border uniforme */
+    padding: 60px;
+    background-color: darkblue;
+}
+
+.contenido{
+    background-color: cyan; /* color para distinguir padding */
+    padding: 50px;
+    text-align: center;
+    font-weight: bold;
+}

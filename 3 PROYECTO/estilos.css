@@ -1,0 +1,31 @@
+/* fondo para ver bien el margin */
+
+body {
+    background-color: lightgray;
+}
+
+/* Caja principal */
+.caja{
+    /*Margen personalizado (espacio externo) */
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-bottom: 30px;
+    margin-left: 70px;
+    /*Borde personalizado (colores y tamaños distintos) */
+    border-top: 10px solid red;
+    border-right: 5px solid blue;
+    border-bottom: 15px solid green;
+    border-left: 20px solid purple;
+    /* Padding personalizado (espacio interno) */
+    padding-top: 25px;
+    padding-right: 50px;
+    padding-bottom: 15px;
+    padding-left: 35px;
+    /* Fondo del contenido central */
+    background-color: orange;
+    color:black;
+    font-weight: bold;
+    text-align: center;
+}
+
+

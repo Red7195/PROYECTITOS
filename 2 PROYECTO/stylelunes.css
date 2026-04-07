@@ -1,0 +1,134 @@
+*{
+
+font-family: "Audiowide", sans-serif;
+    font-weight: 100px;
+    font-style: normal;
+}
+
+body {
+
+background: radial-gradient(circle, #fff, #bbb);
+
+
+}
+
+.grid-container {
+
+    
+}
+
+.grid-item {
+    padding: 25px;
+}
+
+ul li {
+
+    display: inline-block;
+}
+
+
+/* En CSS, "vh" signfica "viewport height", 
+es decir, la altura de la ventana del navegador
+o area de visualizacion al 1% de la altura total
+visible de la ventana. por ejemplo, si la altura de
+la ventana es de 1000 pixeles, 1vh seria igual a 10 pixeles. */
+
+.grid-item {
+    background: #444;
+    margin:10px;
+    display: grid;
+    grid-template-areas:
+    "header header header"
+    "aside main main"
+    "aside main main"
+    "aside main main"
+    "aside main main"
+    "aside main main"
+    "footer footer footer";
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    height:92vh;
+    border:5px solid #000;
+}
+
+
+.grid-footer{
+    background-color: #6f9;
+    grid-area: footer;
+    text-align: center;
+}
+
+.grid-header{
+    background-color: #f96;
+    grid-area: header;
+}
+
+.grid-main{
+
+    background-color: #96f;
+    grid-area: main;
+    text-align: justify;
+}
+
+.grid-aside{
+    background-color: #888;
+    grid-area: aside;
+    text-align: justify;
+}
+
+/* display: flex en CSS se usa para crear un contenedor flexible, 
+lo que permite organizar y alinear facilmente los elementos
+internos en una fila o columna. */
+
+/*
+En CSS, fr es una unidad de medida utilizada en sistemas de diseño con display: grid.
+representa una fraccion del espacio disponible en el contenedor grid.
+Es muy util para crear layouts (disposicion y diseños) flexibles y proporcionales.
+
+Ejemplo simple: 
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; (3 columnas: la segunda el doble de ancha)
+    gap:10px
+}
+Significado
+
+La primera columna ocupa 1 parte del espacio total
+La segunda columna ocupa 2 partes del espacio total.
+y las columnas se asignan en proporciones.
+la unidad fr facilita crear diseños proporcionales
+y responsivos. */
+
+
+@media (max-width:760px) {
+.grid-container {
+    grid-template-areas: 
+        "header"
+        "main"
+        "aside"
+        "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height:auto; /*Mejor que 92vh para mviles */
+    }
+
+    ul li{
+        display: block;
+        margin:10px 0;
+        text-align: center;
+    }
+
+    .grid-header ul {
+        display:block;
+        padding: 0;
+    }
+
+    .grid-item {
+        padding:15px;
+    }
+
+    body{
+        font-size:14px; /*Ajusta tamaño de fuente para mviles */
+    }
+}
+
