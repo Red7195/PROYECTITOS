@@ -1,0 +1,247 @@
+ /* ===== ESTILO GENERAL ===== */
+
+body {
+    font-family: arial, sans-serif;
+    /* Fuente moderna */
+
+    background-color: #f5f5f5;
+    /* Fondo gris claro */
+    
+    margin: 0px;
+     /* Quita espacio por defecto */
+}
+
+ /* ===== TÍTULO ===== */
+
+h1 {
+    text-align: center;
+    /* Centra texto */
+
+    padding: 20px;
+    /* Espacio interno */
+
+    background: white;
+    /* Fondo blanco */
+
+    border-bottom: 1px solid #ddd;
+    /* Línea inferior */
+
+    color: #333;
+    /* Colorsito */
+}
+
+ /* ===== CONTENEDOR PRINCIPAL ===== */
+
+.container {
+    display: flex;
+    /* Coloca productos y carrito lado a lado */
+
+    gap: 20px;
+    /* Espacio entre columnas */
+
+    padding: 20px;
+    /* Espacio interno */
+}
+
+/* ===== PRODUCTOS ===== */
+
+.product-grid {
+    flex: 2;
+    /* Ocupa más espacio que el carrito */
+
+    display: grid;
+    /* Usa cuadrícula */
+
+    background-color: rgb(14, 17, 160);
+    /* Fondito color azul */
+
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    /* Columnas responsivas */
+
+    gap:20px;
+    /* Separación entre tarjetas */
+
+    margin-top: 30px;
+     border: 4px solid;
+    padding: 8px;
+    box-shadow: 5px 5px blue, 10px 10px 
+lightblue, 15px 15px blue;
+    margin: 20px;
+    /* Sombrita táctica */
+}
+
+.product-card {
+    background-color: #0bb6c2;
+    /* Fondo Azulito-Celeste */
+
+    border: 1px solid #0e0303;
+    /* Bordecito con color y todo */
+
+    border-radius: 8px;
+    /* Bordes redondeados */
+
+    padding: 16px;
+    /* espacio interno */
+
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    /* sombra suave */
+    
+    transition: transform 0.2s;
+    border: 4px solid;
+    padding: 8px;
+    box-shadow: 5px 5px 8px rgb(245, 244, 244), 10px 
+10px 8px rgb(245, 244, 244), 15px 15px 8px rgb(245, 244, 244);
+    margin: 20px;
+
+}
+
+/* EFECTO HOVER */
+
+.product-card:hover {
+    transform: translateY(-5px);
+    /* se levanta un poco */
+}
+
+/* ===== BOTONES ===== */
+
+button {
+    margin-top: 10px;
+    /* separación superior */
+
+    padding: 8px;
+    /* tamaño interno */
+
+    background: #2c7a7b;
+    /* color principal */
+
+    color: white;
+    /* texto blanco */
+
+    border: none;
+    /* sin borde */
+
+    border-radius: 6px;
+    /* bordes suaves */
+
+    cursor: pointer;
+    /* mano al pasar */
+}
+
+button:hover {
+    background: #225e61;
+    /* color más oscuro al pasar */
+}
+
+/* CARRITO */
+
+.cart {
+    flex: 1;
+    /* ocupa menos espacio */
+
+    background: white;
+    /* fondo blanco */
+
+    padding: 15px;
+    /* espacio interno */
+
+    border-radius: 10px;
+    /* bordes redondeados */
+
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* sombra */
+}
+
+/* lista del carrito */
+
+#cart-list{
+    list-style: none;
+    /* sin viñetas */
+
+    padding: 0;
+    /* sin espacio */
+}
+
+/* cada item */
+
+#cart-list li {
+    display: flex;
+    /* en fila */
+
+    justify-content: space-between;
+    /* separa elementos */
+
+    margin-bottom: 10px;
+    /* espacio inferior */
+}
+
+/* ===== MODAL ===== */
+
+.modal {
+    display: none;
+    /* oculto por defecto */
+
+    position: fixed;
+    /* encima de todo */
+
+    inset: 0;
+    /* ocupa toda la pantalla */
+
+    background: rgba(0,0,0,0.5);
+    /* fondo oscuro transparente */
+}
+
+/* caja del modal */
+
+.modal-content {
+    background: white;
+    /* fondo blanco */
+
+    width: 300px;
+    /* ancho fijo */
+
+    margin: 100px auto;
+    /* centrado */
+
+    padding: 20px;
+    /* espacio interno */
+
+    border-radius: 10px;
+    /* bordes suaves */
+}
+
+/* inputs */
+
+.modal-content input {
+    width: 100%;
+    /* ocupan todo el ancho */
+
+    margin: 5px 0;
+    /* espacio vertical */
+
+    padding: 8px;
+    /* Tamaño interno */
+    
+    border: 1px solid #ddd;
+    /* borde suave */
+
+    border-radius: 6px;
+    /* bordes redondeados */
+}
+
+.product-card h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #ffffff;
+}
+
+.product-card .description {
+    font-size: 0.95em;
+    color: #ffffff;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.1em;
+    margin-top: 10px;
+}

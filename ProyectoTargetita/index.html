@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- Define que el documento usa HTML5 -->
+
+<html lang="es">
+<!-- Idioma del sitio: español -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Permite usar tildes, ñ y caracteres especiales -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Hace la página adaptable a celulares -->
+
+    <title>Tienda Online</title>
+    <!-- Título que aparece en la pestaña del navegador -->
+
+    <link rel="stylesheet" href="styles.css">
+    <!-- Conecta el archivo de estilos CSS -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Libreria externa para generar PDFs (factura) -->
+</head>
+
+<body>
+<!-- Todo lo visible en la página empieza aquí -->    
+
+    <h1>Mi Tienda Online</h1>
+    <!-- Título principal de la tienda-->
+
+    <div class="Container">
+    <!-- Contenedor general que divide productos y carrito -->
+
+       <div class="product-grid">
+        <!-- Sección donde se muestran los productos -->
+
+        <div class="product-card">
+        <!-- Tarjeta de producto individual-->
+
+            <h3>Camiseta Clásica</h3>
+            <!-- Nombre del producto -->
+
+            <IMG SRC="CamisetaClasica.jpg" style="width:200px; height: 200px;">
+            <!-- Imagen ajustada del roducto -->
+
+            <p class="description">Camiseta de algodón 100%, cómoda y resistencia maxima</p>
+            <!-- Descripción del producto -->
+
+            <p class="price">$19.99</p>
+            <!-- Precio del producto-->
+
+            <button onclick="addToCard('Camiseta Clásica', 19.99)">
+            <!-- Botón que llama a JS para agregar producto al carrito -->
+
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Zapatillas Urbanas</h3>
+            <IMG SRC="Zapatillas.jpg" style="width:200px; height: 200px;">
+            <p class="description">Diseño moderno con suela antideslizante</p>
+            <p class="price">$49</p>
+
+            <button onclick="addToCard('Zapatillas Urbanas', 49)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Mochila Deportiva</h3>
+            <IMG SRC="Mochila.jpg" style="width:200px; height: 200px;">
+            <p class="description">Espaciosa, con múltiples compartimentos e impermeable</p>
+            <p class="price">$34</p>
+            
+            <button onclick="addToCard('Mochila Deportiva', 34)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Reloj Inteligente</h3>
+            <IMG SRC="Reloj Digital.jpg" style="width:200px; height: 200px;">
+            <p class="description">Diseño moderno, estilizado y tecnologico impresionante</p>
+            <p class="price">$102</p>
+
+            <button onclick="addToCard('Reloj Digital', 102)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Abrigo Peludo</h3>
+            <IMG SRC="Abriguito.jpg" style="width:200px; height: 200px;">
+            <p class="description">textura acolchada muy comoda</p>
+            <p class="price">$25</p>
+
+            <button onclick="addToCard('Abrigo Peludo', 25)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Zapatos de Vestir</h3>
+            <IMG SRC="Zapatos de vestir.webp" style="width:200px; height: 200px;">
+            <p class="description">Elegante eleccion de calzado impermeable y muy comodo</p>
+            <p class="price">$36</p>
+
+            <button onclick="addToCard('Zapatos de Vestir', 36)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Omnitrix de juguete</h3>
+            <IMG SRC="Omnitrix.webp" style="width:200px; height: 200px;">
+            <p class="description">Material de goma comodo para el brazo, Deslizante y funcional</p>
+            <p class="price">$14.99</p>
+
+            <button onclick="addToCard('Omnitrix de juguete', 14.99)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Producto de maquillaje</h3>
+            <IMG SRC="Productos de maquillaje.jpg" style="width:200px; height: 200px;;">
+            <p class="description">Antialergico, bonito y libre de quimicos.</p>
+            <p class="price">$7</p>
+
+            <button onclick="addToCard('Producto de maquillaje', 7)">
+                Agregar
+            </button>
+        </div>
+        <div class="product-card">
+            <h3>Play Station 2</h3>
+            <IMG SRC="play2.avif" style="width:200px; height: 200px;">
+            <p class="description">Consola para jugar videojuegos, la MEJOR Consola de toda la historia de la franquicia play station</p>
+            <p class="price">$100.000</p>
+
+            <button onclick="addToCard('Play Station 2', 100.000)">
+                Agregar
+            </button>
+        </div>
+
+        <div class="cart">
+        <!-- Sección del carrito-->
+
+        <h2> Carrito </h2>
+        <!-- Título del carrito -->
+
+        <ul id="cart-list"></ul>
+        <!-- Lista vacia donde JS insertará productos-->
+
+        <p id="total">Total: $0</p>
+        <!-- Muestra el total calculado -->
+
+        <button onclick="openPayment()">
+        <!-- Abre el modal de pago-->
+         
+            Pagar
+        </button>
+        </div>
+
+    </div>
+
+    <div id="payment-modal" class="modal">
+    <!-- Ventana Emergente de pago -->
+
+        <div class="modal-content">
+        <!-- Caja del modal -->
+
+            <h3> Pago simulado </h3>
+            <!-- Título del pago -->
+
+            <input id="card-number" placeholder="Número tarjeta">
+            <!-- input número de tarjeta -->
+
+            <input id="card-name" placeholder="Títular">
+            <!-- Input nombre del titular -->
+
+            <input id="card-exp" placeholder="MM/AA">
+            <!-- Fecha de expiración -->
+
+            <input id="card-cvv" placeholder="CVV">
+            <!-- Código de seguridad -->
+
+            <button onclick="processPayment()">
+            <!-- Botón que procesa el pago -->
+                
+                Confirmar pago
+            </button>
+
+            <button onclick="closePayment()">
+            <!-- Botón para cerrar modal -->
+
+                Cancelar
+            </button>
+
+            <p id="payment-status"></p>
+            <!-- Mensaje de estado del pago-->
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Conecta la lógica JavaScript -->
+</body>
+</html>
