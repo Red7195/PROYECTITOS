@@ -1,0 +1,129 @@
+/* =========================
+   BASE GENERAL
+========================= */
+
+body {
+    font-family: system-ui, Arial, sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    color: #222;
+  }
+  
+  /* título */
+  h1 {
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    background: white;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* =========================
+     LAYOUT PRINCIPAL
+  ========================= */
+  
+  .container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  /* =========================
+     PRODUCTOS
+  ========================= */
+  
+  .product-grid {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  /* tarjeta */
+  .product-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: 0.2s;
+  }
+  
+  /* hover suave */
+  .product-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  /* =========================
+     BOTONES
+  ========================= */
+  
+  button {
+    margin-top: 10px;
+    padding: 8px;
+    background: #2c7a7b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background: #225e61;
+  }
+  
+  /* =========================
+     CARRITO
+  ========================= */
+  
+  .cart {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    height: fit-content;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  
+  /* lista */
+  #cart-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* item */
+  #cart-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  
+  /* =========================
+     MODAL PAGO
+  ========================= */
+  
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+  }
+  
+  /* caja */
+  .modal-content {
+    background: white;
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  
+  /* inputs */
+  .modal-content input {
+    width: 100%;
+    margin: 5px 0;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+  }
