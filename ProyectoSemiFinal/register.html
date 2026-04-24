@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="Stylesheet" type="text/css" href="register.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+<div class="contenedor">
+    <form action="register.php" method="post" name="form" onsubmit="return validarDatos()">
+        <h2>Registra tus datos</h2>
+
+        <label>Nombres</label>
+        <input type="text" name="nombre">
+
+        <label>Apellido Paterno</label>
+        <input type="text" name="apellidop">
+
+        <label>Apellido Materno</label>
+        <input type="text" name="apellidom">
+
+        <label>Correo Electrónico</label>
+        <input type="text" name="correo">
+
+        <label>Teléfono</label>
+        <input type="text" name="telefono">
+
+        <label>Dirección</label>
+        <input type="text" name="direccion">
+
+        <label>Contraseña</label>
+        <input type="text" name="contraseña">
+
+        <label>Confirmar Contraseña</label>
+        <input type="text" name="confirmar_contraseña">
+
+        <input type="submit" value="enviar">
+    </form>
+</div>
+</body> 
+</html>
