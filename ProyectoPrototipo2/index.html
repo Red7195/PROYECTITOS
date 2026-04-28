@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+    <a href="logout.php" style="color: red; font-weight: bold;">Cerrar Sesión</a>
+     <!-- Librería para generar PDF (factura) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <h1>🛒 Productos Más Vendidos</h1>
+
+  <!-- ================= CONTENEDOR GENERAL ================= -->
+  <div class="container">
+
+    <!-- ================= PRODUCTOS ================= -->
+    <div class="product-grid">
+
+      <!-- Producto 1 -->
+      <div class="product-card">
+        <h3>Camiseta Clásica</h3>
+        <img src="Camiseta Clasica.jpg" width="200" height="200">
+        <p class="description">Camiseta de algodon 100%, comoda y resistente</p>
+        <p>$19.99</p>
+        <button onclick="addToCart('Camiseta Clásica', 19.99)">
+          Agregar al carrito
+        </button>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="product-card">
+        <h3>Zapatillas Urbanas</h3>
+        <img src="Zapatillas Urbanas.jpg" width="200" height="200">
+        <p class="description">Diseño moderno con suela antidelizante</p>
+        <p>$49</p>
+        <button onclick="addToCart('Zapatillas Urbanas', 49)">
+          Agregar al carrito
+        </button>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product-card">
+        <h3>Mochila Deportiva</h3>
+        <img src="Mochila deportiva.jpg" width="200" height="200">
+        <p class="description">Espaciosa con multiples compartimientos</p>
+        <p>$34</p>
+        <button onclick="addToCart('Mochila Deportiva', 34)">
+          Agregar al carrito
+        </button>
+      </div>
+
+
+    </div>
+
+    <!-- ================= CARRITO ================= -->
+    <div class="cart">
+
+      <h2>🛍 Carrito</h2>
+
+      <!-- Lista dinámica -->
+      <ul id="cart-list"></ul>
+
+      <!-- Total dinámico -->
+      <p id="total">Total: $0</p>
+
+      <!-- Botón abrir pago -->
+      <button onclick="openPayment()">Pagar</button>
+
+    </div>
+
+  </div>
+
+  <!-- ================= MODAL PAGO ================= -->
+  <div id="payment-modal" class="modal">
+
+    <div class="modal-content">
+
+      <h3>💳 Pago simulado</h3>
+
+      <!-- Inputs tarjeta -->
+      <input id="card-number" placeholder="Número tarjeta">
+      <input id="card-name" placeholder="Titular">
+      <input id="card-exp" placeholder="MM/AA">
+      <input id="card-cvv" placeholder="CVV">
+
+      <!-- Acciones -->
+      <button onclick="processPayment()">Confirmar pago</button>
+      <button onclick="closePayment()">Cancelar</button>
+
+      <!-- Estado del pago -->
+      <p id="payment-status"></p>
+
+    </div>
+
+  </div>
+
+  <!-- Lógica JS -->
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
