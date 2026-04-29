@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Usuario</title>
+    <link rel="Stylesheet" type="text/css" href="CSS/plantilla.css">
+    <script src="JAVA/script.js" defer></script>
+</head>
+<body>
+<div class="contenedor">
+    <form action="login.php" method="post" name="form" onsubmit="return validarDatos()">
+        <h2>Ingrese sus Credenciales</h2>
+
+        <label>Correo Electrónico</label>
+        <input type="text" name="correo">
+
+        <label>Contraseña</label>
+        <input type="password" name="contraseña">
+
+        <input type="submit" value="enviar">
+    </form>
+</div>
+</body> 
+</html>
