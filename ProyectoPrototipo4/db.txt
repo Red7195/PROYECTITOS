@@ -1,0 +1,44 @@
+
+//este codigo crea la tabla dentro de la base de datos de usuarios.
+CREATE TABLE IF NOT EXISTS usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellidop VARCHAR(100) NOT NULL,
+    apellidom VARCHAR(100) NOT NULL,
+    correo VARCHAR(150) NOT NULL UNIQUE, -- El UNIQUE evita correos duplicados
+    telefono VARCHAR(20) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    contraseña VARCHAR(255) NOT NULL, -- Longitud de 255 para el hash de PHP
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+//esto es un disparador y sirve para agregar una cosa a una de las columnas en la tabla de la base de datos segun el 
+//caso, en este por ejemplo, agrega el +56 del número chileno para asegurar concordancia con el pais.
+
+DELIMITER //
+CREATE TRIGGER agregar_prefijo_chile
+BEFORE INSERT ON usuarios
+FOR EACH ROW
+BEGIN
+    -- Si el teléfono no empieza con '+', le pone el +56
+    IF NEW.telefono NOT LIKE '+%' THEN
+        SET NEW.telefono = CONCAT('+56 ', NEW.telefono);
+    END IF;
+END; //
+DELIMITER ;
+
+
+<?php
+// db.php
+$host = "localhost";
+$user = "root";
+$pass = "User.sede"; // Tu contraseña de XAMPP
+$db   = "REGISTROS";
+
+$conexion = new mysqli($host, $user, $pass, $db);
+
+if ($conexion->connect_error) {
+    die("Error de conexión: " . $conexion->connect_error);
+}
+// No cerramos la conexión aquí, se usará en los otros archivos
+?>

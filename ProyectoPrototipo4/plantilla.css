@@ -1,0 +1,38 @@
+/* Estilos Visuales Personalizados */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh; /* Cambiado a min-height para permitir scroll en móviles */
+}
+
+/* La tarjeta de Bootstrap reemplaza a tu .contenedor */
+.card {
+    border-radius: 15px !important;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+
+h2 {
+    color: #333;
+    font-weight: bold;
+}
+
+/* Personalización del botón primario de Bootstrap */
+.btn-primary {
+    background: #667eea !important;
+    border: none !important;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #5a67d8 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Estilo para los inputs cuando tienen el foco */
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.25rem rgba(102, 126, 234, 0.25);
+}
