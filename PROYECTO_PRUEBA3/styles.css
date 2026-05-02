@@ -1,0 +1,77 @@
+/* ==========================================================
+   RESETEO Y BASE 
+   ========================================================== */
+body {
+    background-color: #f4f7f6 !important; /* Un gris más elegante */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================================
+   TARJETAS: SIMETRÍA Y ALINEACIÓN
+   ========================================================== */
+
+/* Forzamos que todas las tarjetas de una fila midan lo mismo */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Importante para que se vean simétricas */
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12) !important;
+}
+
+/* IMÁGENES */
+.card-img-top {
+    aspect-ratio: 1 / 1; /* Hace que todas las fotos sean cuadradas sin importar el archivo original */
+    object-fit: contain; /* 'contain' para que no se corte el producto, 'cover' si quieres que llene todo */
+    background-color: #fff;
+    padding: 15px; /* Espacio para que el producto respire */
+}
+
+/* TEXTO: Evita que títulos largos empujen el botón */
+.card-title {
+    font-size: 1.1rem;
+    height: 2.6rem; /* Espacio fijo para 2 líneas de texto */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    height: 3rem; /* Espacio fijo para la descripción */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 0.85rem;
+}
+
+/* BOTÓN: Siempre al fondo */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* La clase mt-auto de Bootstrap hará el trabajo sucio aquí */
+
+/* ==========================================================
+   MODAL Y CARRITO (LIMPIEZA)
+   ========================================================== */
+.sticky-top {
+    z-index: 1020;
+}
+
+#cart-list li {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+/* Estilo para el modal (Bootstrap ya tiene modales, pero para tu JS actual): */
+.modal-content {
+    border: none;
+    border-radius: 15px;
+}

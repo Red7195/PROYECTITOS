@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+     <!-- Librería para generar PDF (factura) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- CSS de Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- JS de Bootstrap (necesario para que el acordeón funcione) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar Profesional -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 shadow">
+        <div class="container">
+            <a class="navbar-brand" href="#">🛒 The WhiteBox</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-danger btn-sm text-white px-3" href="php/logout.php">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+  <!-- ================= ACORDEÓN DE CATEGORÍAS ================= -->
+<!-- Eliminamos los estilos inline y usamos clases de Bootstrap para el margen -->
+<div class="accordion shadow-sm mt-4" id="accordionTienda">
+
+  <!-- CATEGORÍA 1: ROPA -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catRopa">
+        👕 Ropa Urbana
+      </button>
+    </h2>
+    <div id="catRopa" class="accordion-collapse collapse show">
+      <div class="accordion-body">
+        
+        <!-- Reemplazamos "product-grid" por "row" de Bootstrap -->
+        <div class="row g-4"> 
+          
+          <!-- Camiseta Clásica -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="Ropa/Camiseta Clasica.jpg" class="card-img-top p-2" alt="Camiseta" width="200" height="550">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title fw-bold">Camiseta Clásica</h5>
+                <p class="card-text small text-muted">Camiseta de algodón 100%, cómoda y resistente.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$19.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Camiseta Clásica', 19.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poleron Hoodie -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="Ropa/Poleron Hoodie.jpg" class="card-img-top p-2" alt="Hoodie" width="200" height="550">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title fw-bold">Poleron Hoodie</h5>
+                <p class="card-text small text-muted">Abrigo suave con capucha, perfecto para el frío.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$34.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Poleron Hoodie', 34.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Puedes seguir agregando más "col-12 col-md-6 col-lg-4" aquí -->
+
+        </div> <!-- Fin del row -->
+      </div>
+    </div>
+  </div>
+  <!-- CATEGORÍA 2: CALZADO -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catCalzado">
+        👟 Calzado
+      </button>
+    </h2>
+    <div id="catCalzado" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        
+        <!-- Contenedor de rejilla de Bootstrap -->
+        <div class="row g-4"> 
+          
+          <!-- Zapatillas Urbanas -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="Calzado/Zapatillas Urbanas.jpg" class="card-img-top p-2" alt="Zapatillas Urbanas" width="200" height="550">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title fw-bold">Zapatillas Urbanas</h5>
+                <p class="card-text small text-muted">Diseño moderno con suela antideslizante.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$49.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Zapatillas Urbanas', 49.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zapatillas Deportivas -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="Calzado/Zapatillas Deportiva.jpg" class="card-img-top p-2" alt="Zapatillas Deportivas" width="200" height="550">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title fw-bold">Zapatillas Deportivas</h5>
+                <p class="card-text small text-muted">Ideales para correr, ligeras y cómodas.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$49.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Zapatillas Deportivas', 49.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zapatillas Running -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img src="Calzado/Zapatillas Running.jpg" class="card-img-top p-2" alt="Zapatillas Running" width="200" height="550">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title fw-bold">Zapatillas Running</h5>
+                <p class="card-text small text-muted">Comodidad y ligereza para deporte diario.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$74.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Zapatillas Running', 74.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Fin del row -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORÍA 3: MOCHILAS -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catMochilas" >
+        🎒 Mochilas
+      </button>
+    </h2>
+    <div id="catMochilas" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        
+        <!-- Contenedor row para activar la rejilla de Bootstrap -->
+        <div class="row g-4"> 
+          
+          <!-- Mochila Deportiva -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Mochilas/Mochila Deportiva.jpg" class="card-img-top p-2" alt="Mochila Deportiva" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Mochila Deportiva</h5>
+                <p class="card-text small text-muted">Espaciosa con múltiples compartimientos.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$34.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Mochila Deportiva', 34.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mochila Casual -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Mochilas/Mochila Casual.jpg" class="card-img-top p-2" alt="Mochila Casual" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Mochila Casual</h5>
+                <p class="card-text small text-muted">Espaciosa y resistente, ideal para el día a día.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$39.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Mochila Casual', 39.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mochila Urbana -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Mochilas/Mochila Urbana.jpg" class="card-img-top p-2" alt="Mochila Urbana" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Mochila Urbana</h5>
+                <p class="card-text small text-muted">Diseño moderno con múltiples compartimentos.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$45.00</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Mochila Urbana', 45)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Fin del row -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORÍA 4: TECNOLOGÍA -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catTecno">
+        💻 Tecnología
+      </button>
+    </h2>
+    <div id="catTecno" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        
+        <!-- Sistema de rejilla: 1 col en móvil, 2 en tablet, 3 en desktop, 4 en pantallas grandes -->
+        <div class="row g-4"> 
+          
+          <!-- Smartwatch -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Smartwatch.jpg" class="card-img-top p-2" alt="Smartwatch" width="200" height="550"> 
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Smartwatch</h5>
+                <p class="card-text small text-muted">Monitorea tu actividad física y salud.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$99.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Smartwatch', 99.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reloj Digital -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Reloj Digital.jpg" class="card-img-top p-2" alt="Reloj Digital" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Reloj Digital</h5>
+                <p class="card-text small text-muted">Funcional y elegante, ideal para el día a día.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$59.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Reloj Digital', 59.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cámara Deportiva -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Camara Deportiva.jpg" class="card-img-top p-2" alt="Cámara Deportiva" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Cámara Deportiva</h5>
+                <p class="card-text small text-muted">Graba en 4K y resistente a condiciones extremas.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$119.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Cámara Deportiva', 119.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Audífonos Bluetooth -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Audifonos Bluetooth.jpg" class="card-img-top p-2" alt="Audífonos" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Audífonos Bluetooth</h5>
+                <p class="card-text small text-muted">Audio de calidad con aislamiento de sonido.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$9.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Audífonos Bluetooth', 9.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parlante Portátil -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Parlante Portatil.jpg" class="card-img-top p-2" alt="Parlante" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Parlante Portátil</h5>
+                <p class="card-text small text-muted">Sonido potente con batería de larga duración.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$49.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Parlante Portátil', 49.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tablet Digital -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Tablet Digital.jpg" class="card-img-top p-2" alt="Tablet" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Tablet Digital</h5>
+                <p class="card-text small text-muted">Pantalla HD ideal para trabajo y entretenimiento.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$149.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Tablet Digital', 149.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Teclado Mecánico -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/Teclado Mecanico.jpg" class="card-img-top p-2" alt="Teclado" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Teclado Mecánico</h5>
+                <p class="card-text small text-muted">Iluminación RGB y alta precisión para gaming.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$29.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Teclado Mecánico', 29.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mouse Gamer -->
+          <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Tecnología/mouse gamer.jpg" class="card-img-top p-2" alt="Mouse" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Mouse Gamer</h5>
+                <p class="card-text small text-muted">Sensor óptico de alta velocidad y diseño ergonómico.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$59.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Mouse Gamer', 59.99)">Agregar al carrito</button>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Fin del row -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORÍA 5: ACCESORIOS -->
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#catAccesorios">
+        🕶️ Accesorios
+      </button>
+    </h2>
+    <div id="catAccesorios" class="accordion-collapse collapse">
+      <div class="accordion-body">
+        
+        <!-- Rejilla responsiva: 1 col en móvil, 2 en tablet, 3 en desktop -->
+        <div class="row g-4"> 
+          
+          <!-- Gorra Urbana -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Accesorios/Gorra Urbana.jpg" class="card-img-top p-2" alt="Gorra Urbana" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Gorra Urbana</h5>
+                <p class="card-text small text-muted">Diseño moderno, ajustable para todo estilo.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$14.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Gorra Urbana', 14.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lentes de Sol -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Accesorios/Lentes de Sol.jpg" class="card-img-top p-2" alt="Lentes de Sol" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Lentes de Sol</h5>
+                <p class="card-text small text-muted">Protección UV y diseño elegante.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$24.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Lentes de Sol', 24.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reloj Deportivo -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 text-center">
+              <img src="Accesorios/Reloj Deportivo.jpg" class="card-img-top p-2" alt="Reloj Deportivo" width="200" height="550">
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title fw-bold">Reloj Deportivo</h5>
+                <p class="card-text small text-muted">Resistente al agua con cronómetro integrado.</p>
+                <p class="h5 text-primary mb-3 mt-auto">$59.99</p>
+                <button class="btn btn-primary w-100" onclick="addToCart('Reloj Deportivo', 59.99)">
+                  Agregar al carrito
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- Fin del row -->
+      </div>
+    </div>
+  </div>
+</div> <!-- Aquí se cierra el div id="accordionTienda" -->
+
+    <!-- COLUMNA DEL CARRITO -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm sticky-top" style="top: 20px;">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">🛍 Carrito</h4>
+                    </div>
+                    <div class="card-body">
+                        <ul id="cart-list" class="list-group list-group-flush mb-3">
+                            <!-- Items dinámicos -->
+                        </ul>
+                        <hr>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="h5 mb-0">Total:</span>
+                            <span id="total" class="h4 mb-0 text-success">$0</span>
+                        </div>
+                        <button class="btn btn-primary btn-lg w-100" onclick="openPayment()">Proceder al Pago</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- ================= MODAL PAGO ================= -->
+  <div id="payment-modal" class="modal">
+
+    <div class="modal-content">
+
+      <h3>💳 Pago simulado</h3>
+
+      <!-- Inputs tarjeta -->
+      <input id="card-number" placeholder="Número tarjeta">
+      <input id="card-name" placeholder="Titular">
+      <input id="card-exp" placeholder="MM/AA">
+      <input id="card-cvv" placeholder="CVV">
+
+      <!-- Acciones -->
+      <button onclick="processPayment()">Confirmar pago</button>
+      <button onclick="closePayment()">Cancelar</button>
+
+      <!-- Estado del pago -->
+      <p id="payment-status"></p>
+
+    </div>
+
+  </div>
+
+  <!-- Lógica JS -->
+  <script src="script.js"></script>
+
+
+</body>
+
+</html>
