@@ -1,0 +1,90 @@
+/* ==========================================================
+   BASE DE LA PÁGINA
+   ========================================================== */
+body {
+    /* Fondo con prioridad alta para sobreescribir estilos de frameworks externos */
+    background-color: #f4f7f6 !important; /* Un gris más elegante */
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   COMPONENTES: TARJETAS (CARDS)
+   Control de simetría, alineación y estados interactivos.
+   ========================================================================== */
+
+/**
+ * 1. Contenedor principal de la tarjeta.
+ * Se usa 'height: 100%' para asegurar uniformidad en grids de Bootstrap.
+ */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Importante para que se vean simétricas */
+}
+
+/* Efecto de elevación al pasar el mouse */
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12) !important;
+}
+
+/**
+ * Multimedia:
+ * 'aspect-ratio' garantiza consistencia visual sin editar las imágenes originales.
+ */
+.card-img-top {
+    aspect-ratio: 1 / 1; /* Hace que todas las fotos sean cuadradas sin importar el archivo original */
+    object-fit: contain; /* Mantiene la integridad de la imagen del producto */
+    background-color: #fff;
+    padding: 15px; /* Espacio para que el producto respire */
+}
+
+/**
+ * Contenido y Tipografía:
+ * Implementación de 'Line-Clamp' para limitar el texto y evitar desbordamientos.
+ */
+.card-title {
+    font-size: 1.1rem;
+    height: 2.6rem; /* Espacio fijo para 2 líneas de texto */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    height: 3rem; /* Espacio fijo para la descripción */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-size: 0.85rem;
+}
+
+/* Layout interno del cuerpo para empujar elementos al final (ej. botones) */
+.card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   INTERFAZ DE USUARIO (UI) Y CARRITO
+   ========================================================================== */
+
+/* Asegura que el header/navegación se mantenga sobre otros elementos */
+.sticky-top {
+    z-index: 1020;
+}
+
+/* Lista de elementos en el carrito */
+#cart-list li {
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+}
+
+/* Estilo para el modal (Bootstrap ya tiene modales, pero para el JS actual): */
+.modal-content {
+    border: none;
+    border-radius: 15px;
+}
